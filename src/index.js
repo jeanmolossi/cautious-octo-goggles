@@ -7,8 +7,20 @@ const http = require('http')
  * @returns {void}
  */
 var serverListener = (request, response) => {    
-    response.writeHead(200, { 'Content-Type': 'application/json' })
-    return response.end(JSON.stringify({ message: 'Hello World' }))
+    if (request.url === '/ping' && request.method === "GET") {
+        const body = JSON.stringify({ message: `Pong!` })
+        
+        response.writeHead(200,
+            {
+                'Content-Type': 'application/json',
+                'Content-Length': Buffer.byteLength(body)
+            },
+        )
+        return response.end(body)
+    }
+    
+    response.writeHead(404, { 'Content-Type': 'application/problem+json' })
+    return response.end()
 }
 
 const server = http.createServer(serverListener)

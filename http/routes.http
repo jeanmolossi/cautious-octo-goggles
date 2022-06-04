@@ -5,3 +5,13 @@
 GET {{baseURL}}/ping
 
 ###
+# @name add-transaction
+POST {{baseURL}}/transaction
+
+###
+# @name remove-transaction
+DELETE {{baseURL}}/transaction/1
+
+###
+# @name history
+GET {{baseURL}}/transactions

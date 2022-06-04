@@ -54,6 +54,11 @@ Esta é uma API criada somente com NodeJS nativo para fins de estudo
 |  /transaction/{{id}}  | **DELETE**| Excluir transação                   |
 |  /transactions        | **GET**   | Recupera o histórico de transações  |
 
+### Material auxiliar
+
+- [Criar testar e aprender RegExp](https://regex101.com/)
+- [Como funciona o regex de rotas](https://regex101.com/r/Vw7fH1/1)
+
 # :book: Playlist
 
 **[Inscreva-se no canal](https://www.youtube.com/channel/UCWQyi_jJN_C-yVffPleNlaQ?sub_confirmation=1&utm_source=github&utm_campaing=finance-management-api-no-fw)**

@@ -1,4 +1,4 @@
-const { createServer } = require('./application')
+const { createServer } = require('./server')
 
 const server = createServer()
 server.get('/ping', (req, res) => {

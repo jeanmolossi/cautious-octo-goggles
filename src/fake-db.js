@@ -1,7 +1,8 @@
 var db = {}
 
 db.connect = function() {
-    this.base = []
+    if (!this.base)
+        this.base = []
 }
 
 db.find = function({ where }) {

@@ -13,7 +13,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-    "TEST": "ok"
+	"note": "Pizza iFood",
+	"type": "outcome",
+	"value": 6990
 }
 
 ###

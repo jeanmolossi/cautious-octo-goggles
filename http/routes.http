@@ -3,15 +3,27 @@
 ###
 # @name ping
 GET {{baseURL}}/ping
+Content-Type: application/json
+Accept: application/json
 
 ###
 # @name add-transaction
 POST {{baseURL}}/transaction
+Content-Type: application/json
+Accept: application/json
+
+{
+    "TEST": "ok"
+}
 
 ###
 # @name remove-transaction
 DELETE {{baseURL}}/transaction/1
+Content-Type: application/json
+Accept: application/json
 
 ###
 # @name history
 GET {{baseURL}}/transactions
+Content-Type: application/json
+Accept: application/json

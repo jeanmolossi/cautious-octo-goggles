@@ -17,6 +17,13 @@ Primeiro certifique-se de ter as seguintes ferramentas instaladas:
 - [npm](https://nodejs.org/en/)
 - [yarn](#instalar-yarn)
 
+#### Instalar Yarn
+
+```shell
+npm install --global yarn && \
+yarn --version
+```
+
 # :runner: Rodando o projeto
 
 Primeiro clone o projeto:
@@ -101,9 +108,3 @@ Com a extensão instalada basta clicar em `send request` que aparece em cima do 
 
 - [Aula 01](https://www.youtube.com/watch?v=10jVqDUXyEg)
 
-#### Instalar Yarn
-
-```shell
-npm install --global yarn && \
-yarn --version
-```

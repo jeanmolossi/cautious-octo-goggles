@@ -1,3 +1,4 @@
+const http = require('http')
 /**
  * restore the called arguments
  * @returns {any} called arguments
@@ -19,9 +20,14 @@ module.exports = {
      * @returns {Promise<Buffer>}
      */
     getRawBody: async function getRawBody(request) {
-        return new Promise((resolve) => {
-            var buffer = []
-            var complete = false;
+        var buffer = []
+        var complete = false;
+        
+        return new Promise((resolve, reject) => {       
+            if (typeof request.readable !== 'undefined' && !request.readable) {
+                done(null, 'stream unreadable')
+                return;
+            }
             
             function done() {
                 var args = restoreArgs.apply(this, arguments)
@@ -31,7 +37,7 @@ module.exports = {
                 cleanup()
                 
                 if (args[0] !== null) {
-                    resolve(args[0]);
+                    reject(args[0]);
                 } else {
                     resolve(args[1]);
                 }
@@ -57,11 +63,13 @@ module.exports = {
                 request.removeListener('data', onData)
                 request.removeListener('error', onEnd)
                 request.removeListener('end', onEnd)
+                request.removeListener('close', cleanup)
             }
             
             request.on('data', onData)
             request.on('error', onEnd)
             request.on('end', onEnd)
+            request.on('close', cleanup)
         })
     },
     

@@ -12,22 +12,50 @@ Esta é uma API criada somente com NodeJS nativo para fins de estudo
 # :footprints: Primeiros passos
 
 Primeiro certifique-se de ter as seguintes ferramentas instaladas:
-- [Git]()
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [NodeJS e npm](https://nodejs.org/en/)
+- [npm](https://nodejs.org/en/)
+- [yarn](#instalar-yarn)
 
 # :runner: Rodando o projeto
 
 Primeiro clone o projeto:
 ```shell
-git clone https://github.com/jeanmolossi/cautious-octo-goggles.git
+git clone --branch entrypoint https://github.com/jeanmolossi/cautious-octo-goggles.git introducao-nodejs
 ```
+Acesse a pasta:
+```shell
+cd introducao-nodejs
+```
+
+**Se você clonou a branch `entrypoint` provavelmente seu projeto estará vazio. Entretanto, se você clonou a partir da branch nodejs-nativo poderá executar:**
+```shell
+yarn dev
+```
+
+### Executando as requests
+
+Após seu projeto rodar com sucesso, acesse a pasta: `http`, você encontrará um arquivo de requests. Para conseguir executál-as você precisa da extensão [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).
+
+Para instalar a extensão:
+
+Em seu VSCode aperte simultaneamente as teclas (Ctrl + P) e cole o seguinte comando: `ext install humao.rest-client`
+
+Com a extensão instalada basta clicar em `send request` que aparece em cima do host de cada chamada.
+
+[<img src="./docs/rest-client.png" width="600" />](./docs/rest-client.png)
+
+- **1** - Certifique-se que a aplicação está executando
+- **2** - Clique em send request
+- **3** - Receba o retorno da API
 
 # :computer: A Api
 
 ### Funcionalidades
 
-- [ ] Criar entrada de caixa
-- [ ] Criar saída de caixa
-- [ ] Histórico de entradas e saídas
+- [x] Criar entrada de caixa
+- [x] Criar saída de caixa
+- [x] Histórico de entradas e saídas
 
 ### Modelos
 
@@ -72,3 +100,10 @@ git clone https://github.com/jeanmolossi/cautious-octo-goggles.git
 **[Inscreva-se no canal](https://www.youtube.com/channel/UCWQyi_jJN_C-yVffPleNlaQ?sub_confirmation=1&utm_source=github&utm_campaing=finance-management-api-no-fw)**
 
 - [Aula 01](https://www.youtube.com/watch?v=10jVqDUXyEg)
+
+#### Instalar Yarn
+
+```shell
+npm install --global yarn && \
+yarn --version
+```

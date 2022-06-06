@@ -7,7 +7,7 @@ Content-Type: application/json
 Accept: application/json
 
 ###
-# @name add-transaction
+# @name add_transaction
 POST {{baseURL}}/transaction
 Content-Type: application/json
 Accept: application/json
@@ -19,13 +19,13 @@ Accept: application/json
 }
 
 ###
-# @name remove-transaction
-DELETE {{baseURL}}/transaction/1
+# @name remove_transaction
+DELETE {{baseURL}}/transaction/{{add_transaction.response.body.id}}
 Content-Type: application/json
 Accept: application/json
 
 ###
-# @name history
+# @name transaction_history
 GET {{baseURL}}/transactions
 Content-Type: application/json
 Accept: application/json

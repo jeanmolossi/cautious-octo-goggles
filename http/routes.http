@@ -20,6 +20,8 @@ Accept: application/json
 
 ###
 # @name remove_transaction
+@transactionID = 990f7ba3-6e42-4a77-9f12-3d97c798fb48
+# DELETE {{baseURL}}/transaction/{{transactionID}}
 DELETE {{baseURL}}/transaction/{{add_transaction.response.body.id}}
 Content-Type: application/json
 Accept: application/json

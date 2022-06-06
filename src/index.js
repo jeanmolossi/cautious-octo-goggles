@@ -1,6 +1,12 @@
 const { transactionController } = require('./controller/transaction')
 const { createServer } = require('./server')
 
+Number.prototype.toBrl = function toBrl() {
+    return new Intl
+        .NumberFormat('pt-BR', { currency: 'BRL', style: 'currency' })
+        .format(this / 100)
+}
+
 const server = createServer()
 server.get('/ping', (_, res) => {
     return res.json({ message: 'Pong!' })

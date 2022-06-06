@@ -37,7 +37,7 @@ transactionController.remove = function remove(request, response) {
 transactionController.history = function history(request, response) {
     const transactions = transactionHistory()
     
-    if (transactions.length === 0) {
+    if (transactions.metadata.rows === 0) {
         return response.status(204).json()
     }
     

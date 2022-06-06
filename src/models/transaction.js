@@ -1,15 +1,5 @@
 const { randomUUID } = require('crypto')
-const { mixin } = require('../server/helpers')
-
-function HttpError() {
-    var err = new Error(arguments[0])
-    
-    mixin(this, err)
-    
-    this.code = arguments[1]
-    
-    return this
-}
+const HttpError = require('../errors/http-error')
 
 function isTypeValid(type) {
     return type === 'income' || type === 'outcome'
@@ -28,7 +18,7 @@ function validateValue(value) {
         throw new HttpError('value must be a number', 400)
     }
     
-    return true;
+    return;
 }
 
 function Transaction({ id = randomUUID(), note, type = 'outcome', value }) {
@@ -38,8 +28,12 @@ function Transaction({ id = randomUUID(), note, type = 'outcome', value }) {
     
     validateValue(value)
     
+    if (!note || note.trim().length === 0) {
+        throw new HttpError('required field: note field must have a value', 400)
+    }
+    
     this.id = id;
-    this.note = note;
+    this.note = note.trim();
     this.type = type;
     this.value = +value;
     this.created_at = new Date().toISOString();

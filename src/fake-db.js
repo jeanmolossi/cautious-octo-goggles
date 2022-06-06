@@ -5,7 +5,7 @@ db.connect = function() {
         this.base = []
 }
 
-db.find = function({ where }) {
+db.find = function(where) {
     if (!where) {
         return this.base
     }
@@ -20,7 +20,7 @@ db.insert = function(item) {
     this.base.push(item)
 }
 
-db.delete = function ({ where }) {
+db.delete = function (where) {
     if (!where) {
         return this.base = []
     }

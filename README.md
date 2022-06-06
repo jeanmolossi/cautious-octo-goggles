@@ -11,7 +11,15 @@ Esta é uma API criada somente com NodeJS nativo para fins de estudo
 
 # :footprints: Primeiros passos
 
+Primeiro certifique-se de ter as seguintes ferramentas instaladas:
+- [Git]()
+
 # :runner: Rodando o projeto
+
+Primeiro clone o projeto:
+```shell
+git clone https://github.com/jeanmolossi/cautious-octo-goggles.git
+```
 
 # :computer: A Api
 

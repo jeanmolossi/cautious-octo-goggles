@@ -7,6 +7,20 @@ function Route(method, path, handler) {
     this.handler = handler
 }
 
+Route.prototype.handle = function handle(request, response, next) {
+    var fn = this.handler
+    
+    if (fn.length > 3) {
+        return next();
+    }
+    
+    try {
+        fn(request, response, next)
+    } catch (error) {
+        next(error)
+    }
+}
+
 function Router() {
     this.methods = {};
     this.stack = []
@@ -17,27 +31,24 @@ Router.prototype.route = function (method, path, handler) {
     this.stack.push(new Route(method, path, handler))
 }
 
-/**
- * Request parses
- * @param {http.IncomingMessage} request the request
- * @returns {boolean} Returns if parse is ok
- */
-Router.prototype.parseRequest = function parseRequest(request) {
-    var statusCode = 204
-    
-    if (!request.headers['accept'] || request.headers.accept !== 'application/json') {
-        statusCode = 406 // No ac
+Router.prototype.use = function use(fn) {
+    this.route("GET", ".*", fn)
+    this.route("POST", ".*", fn)
+    this.route("DELETE", ".*", fn)
+    return this
+}
+
+Router.prototype.init = function (app) {
+    return function defineProto(request, response, next) {
+        request.res = response;
+        response.req = request;
+        request.next = next;
+        
+        Object.setPrototypeOf(request, app.request)
+        Object.setPrototypeOf(response, app.response)
+        
+        next()
     }
-    
-    if (!request.headers['content-type'] || request.headers['content-type'] !== 'application/json') {
-        statusCode = 415
-    }    
-    if (statusCode === 204) {
-        return true
-    }
-    
-    request.statusCode = statusCode
-    return false
 }
 
 /**
@@ -47,21 +58,15 @@ Router.prototype.parseRequest = function parseRequest(request) {
  */
 Router.prototype.handle = function handle(request, response, out) {
     var self = this;
-    const register = testRoute(request.url)
     
     var params = {}
     var stack = self.stack
     var done = restore(out, request)
+    var index = 0;
     
     request.next = next
     
-    if(!this.parseRequest(request)) {
-        try {
-            throw new Error('request fails')
-        }catch(err) {
-            next(err)
-        }
-    }
+    const register = testRoute(request.url)
     
     next();
     
@@ -72,12 +77,11 @@ Router.prototype.handle = function handle(request, response, out) {
         }
             
         var match;
-        var index = 0;
         var handle;
         var route;
         
         if (index >= stack.length) {
-            done()
+            setImmediate(done, null)
             return;
         }
         
@@ -85,6 +89,7 @@ Router.prototype.handle = function handle(request, response, out) {
             handle = stack[index++];
             
             const result = register(handle.path)
+            
             match = result.match
             params = result.params
             route = handle.path
@@ -137,7 +142,7 @@ Router.prototype.handle = function handle(request, response, out) {
         }
         
         try {
-            handle.handler(request, response, next)
+            handle.handle(request, response, next)
         } catch (err) {
             next(err)
         }

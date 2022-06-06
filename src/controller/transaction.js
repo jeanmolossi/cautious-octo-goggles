@@ -19,13 +19,15 @@ transactionController.remove = function remove(request, response) {
     
     if (!params.id) {
         return response
-            .writeHead(400, { 'Content-Type': 'application/json' })
-            .end(JSON.stringify({ error: 'id is not set' }))
+            .status(400)
+            .json({ error: 'id is not set' })
     }
     
-    return response
-        .writeHead(204, { 'Content-Length': 0 })
-        .end()
+    return response.status(204).json()
+}
+
+transactionController.history = function history(request, response) {
+    return response.json([])
 }
 
 module.exports = { transactionController }

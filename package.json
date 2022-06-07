@@ -1,8 +1,11 @@
 {
   "name": "finance-management-api-no-fw",
   "version": "1.0.0",
+  "description": "NodeJs Rest API using no libs or frameworks",
+  "author": "Jean Carlos Molossi",
   "main": "index.js",
-  "license": "MIT",
+  "license": "GNU GPL3",
+  "homepage": "https://jeanmolossi.github.io/jeanmolossi/",
   "scripts": {
       "dev": "nodemon ./src/index.js",
       "start": "node ./src/index.js"

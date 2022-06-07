@@ -1,6 +1,11 @@
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
 # Finance gestor
 
-Esta é uma API criada somente com NodeJS nativo para fins de estudo
+Esta é uma API criada somente com NodeJS nativo para fins de estudo.
+
+Nesta api utilizei a memória para persistir os dados, simulando um banco de dados. Também criei um mini framework para criar as rotas e elucidar um conhecimento mais profundo sobre muitos conceitos do NodeJS nativo (sem bibliotecas)
 
 # Tabela de conteúdos
 
@@ -50,7 +55,7 @@ Em seu VSCode aperte simultaneamente as teclas (Ctrl + P) e cole o seguinte coma
 
 Com a extensão instalada basta clicar em `send request` que aparece em cima do host de cada chamada.
 
-[<img src="./docs/rest-client.png" width="600" />](./docs/rest-client.png)
+[![alt text](./docs/rest-client.png "Ampliar imagem com os passos")](./docs/rest-client.png)
 
 - **1** - Certifique-se que a aplicação está executando
 - **2** - Clique em send request
@@ -106,5 +111,5 @@ Com a extensão instalada basta clicar em `send request` que aparece em cima do 
 
 **[Inscreva-se no canal](https://www.youtube.com/channel/UCWQyi_jJN_C-yVffPleNlaQ?sub_confirmation=1&utm_source=github&utm_campaing=finance-management-api-no-fw)**
 
-- [Aula 01](https://www.youtube.com/watch?v=10jVqDUXyEg)
+- [Aula 01](https://youtu.be/ER4bT27Ndwc)
 
